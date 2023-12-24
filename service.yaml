@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service
+spec:
+  selector:
+    app: nodejs-app  # Match the labels used in your deployment
+  ports:
+    - protocol: TCP
+      port: 80  # Port that your service will listen on within the cluster
+      targetPort: 3000
+      nodePort: 30001    # Port that your Node.js app is running on in the pods
+  type: NodePort         # Use ClusterIP for internal access within the cluster
+
